@@ -23,9 +23,9 @@ app.use(morgan('dev'));
 
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);
-app.use("/api", userRoutes);
+app.use('/auth', authRoutes);
+app.use('/tasks', taskRoutes);
+app.use("/", userRoutes);
 
 // Default Route
 app.get('/', (req, res) => {
