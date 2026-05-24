@@ -16,8 +16,9 @@ app.use(morgan("dev"));
 app.use(
   cors({
     origin: [
-      "https://task-management-fontend-jdpuj5a0t-rohit-deokar-s-projects.vercel.app",
-      "https://task-management-fontend-4nzj-jdgdonwqw-rohit-deokar-s-projects.vercel.app",
+      "http://localhost:4200",
+      "https://task-management-fontend-4nzj.vercel.app",
+      "https://task-management-fontend-4nzj-o5xh8pf3k-rohit-deokar-s-projects.vercel.app",
     ],
     credentials: true,
   }),
