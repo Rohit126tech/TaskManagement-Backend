@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 // CORS
 app.use(
   cors({
-    origin: [
+    origin: ["https://task-management-fontend-oycdr3dib-rohit-deokar-s-projects.vercel.app",
       "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app",
       "http://localhost:4200"
     ],
