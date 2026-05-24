@@ -10,22 +10,25 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(morgan("dev"));
 
 const allowedOrigins = [
-
-  "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app/",
-  
+  "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app",
   "http://localhost:4200"
 ];
 
+// CORS FIXED
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+      // allow Postman / server-to-server requests
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
       }
+
+      return callback(new Error("Not allowed by CORS: " + origin));
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -33,7 +36,8 @@ app.use(
   })
 );
 
-app.use(morgan("dev"));
+//  handle preflight requests
+app.options("*", cors());
 
 // Routes
 app.use("/auth", authRoutes);
