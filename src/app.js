@@ -16,19 +16,12 @@ app.use(morgan("dev"));
 app.use(
   cors({
     origin: [
-     "https://task-management-fontend-4nzj-qwfm2b0b5-rohit-deokar-s-projects.vercel.app",
-      "https://task-management-fontend-6bc9ht6ve-rohit-deokar-s-projects.vercel.app",
-      "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app",
-      "http://localhost:4200"
+      "https://task-management-fontend-jdpuj5a0t-rohit-deokar-s-projects.vercel.app",
+      "https://task-management-fontend-4nzj-jdgdonwqw-rohit-deokar-s-projects.vercel.app",
     ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-  })
+  }),
 );
-
-
-
 
 // Routes
 app.use("/auth", authRoutes);

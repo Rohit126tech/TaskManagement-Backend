@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// ================= HASH PASSWORD =================
+//  HASH PASSWORD 
 userSchema.pre('save', async function (next) {
 
   if (!this.isModified('password')) {
@@ -53,7 +53,7 @@ userSchema.pre('save', async function (next) {
 
 });
 
-// ================= MATCH PASSWORD =================
+//  MATCH PASSWORD
 userSchema.methods.matchPassword = async function (enteredPassword) {
 
   return await bcrypt.compare(
