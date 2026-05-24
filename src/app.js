@@ -11,36 +11,24 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 
-const allowedOrigins = [
-  "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app",
-  "http://localhost:4200"
-];
-
-
+// CORS
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-
-      return callback(null, false);
-    },
+    origin: [
+      "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app",
+      "http://localhost:4200"
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
 
-//  handle preflight explicitly
-app.options("*", cors());
 
-// Routes MUST come AFTER cors
+// Routes
 app.use("/auth", authRoutes);
 app.use("/tasks", taskRoutes);
-app.use("/", userRoutes);
+app.use("/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Task Management API Running...");
