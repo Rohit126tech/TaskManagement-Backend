@@ -11,13 +11,24 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+const allowedOrigins = [
+  "https://task-management-fontend-jdpuj5a0t-rohit-deokar-s-projects.vercel.app",
+  "https://task-management-fontend-fkzbqqd26-rohit-deokar-s-projects.vercel.app",
+  "http://localhost:4200"
+];
+
 app.use(
   cors({
-    origin: [
-      "https://task-management-fontend-jdpuj5a0t-rohit-deokar-s-projects.vercel.app",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
 
