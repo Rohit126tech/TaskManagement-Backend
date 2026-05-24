@@ -1,13 +1,13 @@
-//all users
 
 const User = require("../models/User");
+const Task = require("../models/Task");
+
+
 
 exports.getAllUsers = async (req, res) => {
-
   try {
 
-    const users = await User.find()
-      .select("-password");
+    const users = await User.find().select("-password");
 
     res.status(200).json({
       success: true,
@@ -23,12 +23,9 @@ exports.getAllUsers = async (req, res) => {
     });
 
   }
-
 };
- 
-//user specific tasks
 
-const Task = require("../models/Task");
+
 
 exports.getUserTasks = async (req, res) => {
 
@@ -55,10 +52,7 @@ exports.getUserTasks = async (req, res) => {
 
 };
 
-//delete user
 
-const User = require("../models/User");
-const Task = require("../models/Task");
 
 exports.deleteUser = async (req, res) => {
 
@@ -100,6 +94,6 @@ exports.deleteUser = async (req, res) => {
     });
 
   }
-};
 
+};
 
