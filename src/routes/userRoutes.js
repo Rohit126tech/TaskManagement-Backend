@@ -3,16 +3,19 @@ const express = require("express");
 
 const {
   getAllUsers,
-  getUserTasks
+  getUserTasks,
+  deleteUser
 } = require("../controllers/userController");
+
+const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-// GET /users
 router.get("/", getAllUsers);
 
-// GET /users/:userId/tasks
 router.get("/:userId/tasks", getUserTasks);
+
+router.delete("/:id", protect, deleteUser);
 
 module.exports = router;
 
