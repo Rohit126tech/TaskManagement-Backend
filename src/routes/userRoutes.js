@@ -8,8 +8,11 @@ const {
 
 const router = express.Router();
 
-router.get("/users", getAllUsers);
+// GET /users
+router.get("/", getAllUsers);
 
-router.get("/users/:userId/tasks", getUserTasks);
+// GET /users/:userId/tasks
+router.get("/:userId/tasks", getUserTasks);
 
 module.exports = router;
+
