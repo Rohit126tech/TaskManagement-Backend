@@ -12,8 +12,9 @@ const app = express();
 app.use(express.json());
 
 const allowedOrigins = [
-  "https://task-management-fontend-jdpuj5a0t-rohit-deokar-s-projects.vercel.app",
-  "https://task-management-fontend-fkzbqqd26-rohit-deokar-s-projects.vercel.app",
+
+  "https://task-management-fontend-7esllcssj-rohit-deokar-s-projects.vercel.app/",
+  
   "http://localhost:4200"
 ];
 
