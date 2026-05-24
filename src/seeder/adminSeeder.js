@@ -1,11 +1,15 @@
 
 const mongoose = require("mongoose");
+require("dotenv").config({ path: "./.env" });
+
 const User = require("../models/User");
 
 const createAdmin = async () => {
   try {
 
-    await mongoose.connect("mongodb://127.0.0.1:27017/task-management");
+    await mongoose.connect(process.env.MONGODB_URI);
+
+    console.log("MongoDB Connected");
 
     const adminExists = await User.findOne({
       email: "admin@gmail.com",
@@ -16,7 +20,7 @@ const createAdmin = async () => {
       process.exit();
     }
 
-    const admin = await User.create({
+    await User.create({
       name: "Admin",
       email: "admin@gmail.com",
       password: "admin123",
